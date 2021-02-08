@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/tabhost"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@android:id/tabcontent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:id="@+id/tabSong"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EDE6cc"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    >
+                    <ImageButton
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#EDE6cc"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lv1" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </EditText>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#EDE6cc"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lv2" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </EditText>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#EDE6cc"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lv3" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </EditText>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tabJuna"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EDE6cc"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    >
+                    <ImageButton
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#EDE6cc"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lv1" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </EditText>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#EDE6cc"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lv2" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </EditText>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#EDE6cc"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lv3" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </EditText>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tabJA"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#EDE6cc"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    >
+                    <ImageButton
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#EDE6cc"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lv1" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </EditText>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageButton
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#EDE6cc"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lv2" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </EditText>
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <ImageButton
+                        android:layout_width="90dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="#EDE6cc"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/lv3" />
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="5">
+
+                    </EditText>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tabWeb"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#aaeeff"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/edtURL"
+                        android:hint="URL을 입력하세요"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:layout_weight="1"
+                        />
+                    <Button
+                        android:id="@+id/btnGo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이동"/>
+                    <Button
+                        android:id="@+id/btnBack"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이전"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/tabArtist"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#EDE6cc"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        >
+                        <ImageButton
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#EDE6cc"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/lv1" />
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5">
+
+                        </EditText>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageButton
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#EDE6cc"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/lv2" />
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5">
+
+                        </EditText>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <ImageButton
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="#EDE6cc"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/lv3" />
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="5">
+
+                        </EditText>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+        <TabWidget
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@android:id/tabs"
+            android:backgroundTint="#A9C4F3"
+            android:background="#A9C4F3">
+        </TabWidget>
+    </LinearLayout>
+</TabHost>
