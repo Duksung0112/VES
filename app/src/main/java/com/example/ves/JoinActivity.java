@@ -10,14 +10,17 @@ import android.widget.TextView;
 public class JoinActivity extends Activity {
     TextView tvId, tvPw , tvPwcheck, tvName, tvType;
     EditText edtId, edtPw , edtPwcheck, edtName;
-    Button btnIdcheck , btnJoin;
+    Button btnIdcheck , btnJoin2;
 
-    RadioGroup radioType = (RadioGroup)findViewById(R.id.radioType);
-    RadioButton rdStudent = (RadioButton) findViewById(R.id.rdStudent);
-    RadioButton rdTeacher = (RadioButton) findViewById(R.id.rdTeacher);
+    RadioGroup radioType;
+    RadioButton rdStudent;
+    RadioButton rdTeacher;
 
     @Override
     protected void onCreate(Bundle SavedInstanceState){
+         radioType= (RadioGroup)findViewById(R.id.radioType);
+        rdStudent = (RadioButton) findViewById(R.id.rdStudent);
+        rdTeacher = (RadioButton) findViewById(R.id.rdTeacher);
 
         super.onCreate(SavedInstanceState);
         setContentView(R.layout.join);

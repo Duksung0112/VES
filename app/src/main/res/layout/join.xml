@@ -28,14 +28,13 @@
         android:orientation="horizontal"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:padding="16dp"
         >
 
         <TextView
             android:id="@+id/tvId"
             android:layout_width="145dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="ID"
             android:textColor="#000000"
             android:textSize="22dp" />
@@ -43,19 +42,24 @@
         <EditText
             android:id="@+id/edtId"
             android:layout_width="160dp"
-            android:layout_height="30dp" />
+            android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:background="#faf5e1"
+            android:singleLine="false"/>
 
         <Button
             android:id="@+id/btnIdcheck"
-            android:layout_width="80dp"
+            android:layout_width="70dp"
             android:layout_height="match_parent"
             android:backgroundTint="#a9c4f3"
+            android:textSize="7dp"
+            android:textAlignment="textStart"
             android:text="중복 확인" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -64,7 +68,7 @@
         <TextView
             android:id="@+id/tvPw"
             android:layout_width="145dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Password"
             android:textColor="#000000"
             android:textSize="20dp" />
@@ -72,14 +76,17 @@
         <EditText
             android:id="@+id/edtPw"
             android:layout_width="230dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:background="#faf5e1"
+            android:inputType="textPassword"/>
 
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -88,7 +95,7 @@
         <TextView
             android:id="@+id/tvPwcheck"
             android:layout_width="145dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Password 확인"
             android:textColor="#000000"
             android:textSize="20dp" />
@@ -96,14 +103,17 @@
         <EditText
             android:id="@+id/edtPwcheck"
             android:layout_width="230dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:background="#faf5e1"
+            android:inputType="textPassword"/>
 
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -112,7 +122,7 @@
         <TextView
             android:id="@+id/tvName"
             android:layout_width="145dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="이름"
             android:textColor="#000000"
             android:textSize="22dp" />
@@ -120,13 +130,16 @@
         <EditText
             android:id="@+id/edtName"
             android:layout_width="230dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:textColor="#000000"
+            android:background="#faf5e1"
+            android:singleLine="false"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:orientation="horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -135,13 +148,13 @@
         <TextView
             android:id="@+id/tvType"
             android:layout_width="145dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="Type 선택"
             android:textColor="#000000"
             android:textSize="20dp" />
         <RadioGroup
             android:layout_width="230dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="horizontal"
             android:id="@+id/radioType">
 
@@ -181,7 +194,7 @@
         android:padding="16dp">
 
         <Button
-            android:id="@+id/btnJoin"
+            android:id="@+id/btnJoin2"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:backgroundTint="#a9c4f3"

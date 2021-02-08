@@ -10,9 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-        <activity
-            android:name=".MainActivity">
-        </activity>
+
 
         <activity
             android:name=".SplashActivity">
@@ -25,7 +23,12 @@
         </activity>
 
         <activity
-            android:name=".JoinActivity" />
+        android:name=".MainActivity">
+         </activity>
+
+        <activity
+            android:name=".JoinActivity">
+        </activity>
 
     </application>
 
