@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),JoinActivity.class);
                 startActivity(intent);
             }
-        });
+        });//데이식스
     }
 }
 //데이식스
