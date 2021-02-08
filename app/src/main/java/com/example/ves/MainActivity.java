@@ -36,6 +36,4 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-
-//안녕
+//데이식스
