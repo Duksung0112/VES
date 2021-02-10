@@ -11,6 +11,10 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <activity
+            android:name=".MainActivity">
+        </activity>
+
+        <activity
             android:name=".SplashActivity">
             <intent-filter>
                 <action
@@ -21,16 +25,13 @@
         </activity>
 
         <activity
-        android:name=".MainActivity">
-         </activity>
-
-        <activity
             android:name=".JoinActivity">
         </activity>
 
         <activity
             android:name=".HomeActivity">
         </activity>
+
 
     </application>
 
