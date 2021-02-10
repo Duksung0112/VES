@@ -22,12 +22,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        btnJoin=(Button) findViewById(R.id.btnJoin);
+
         edtId= (EditText) findViewById(R.id.edtId);
         edtPw = (EditText) findViewById(R.id.edtPw);
         btnLogin=(Button) findViewById(R.id.btnLogin);
+        btnJoin=(Button) findViewById(R.id.btnJoin);
 
-        btnJoin.setOnClickListener(new View.OnClickListener() {
+        btnJoin.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),JoinActivity.class);

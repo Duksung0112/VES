@@ -10,8 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
-
-
         <activity
             android:name=".SplashActivity">
             <intent-filter>
@@ -28,6 +26,10 @@
 
         <activity
             android:name=".JoinActivity">
+        </activity>
+
+        <activity
+            android:name=".HomeActivity">
         </activity>
 
     </application>
