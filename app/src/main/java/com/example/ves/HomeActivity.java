@@ -35,7 +35,7 @@ public class HomeActivity extends TabActivity {
         tabHost.addTab(tabSong);
 
         TabHost.TabSpec tabArtist = tabHost.newTabSpec("ARTIST").setIndicator(imgWord);
-        tabArtist.setContegint(R.id.taba);
+        tabArtist.setContent(R.id.taba);
         tabHost.addTab(tabArtist);
 
         TabHost.TabSpec tabAlbum = tabHost.newTabSpec("ALBUM").setIndicator(imgMic);
@@ -57,7 +57,6 @@ public class HomeActivity extends TabActivity {
         tabHost.getTabWidget().getChildAt(1).getLayoutParams().height = (screenHeight * 15)/200;
         tabHost.getTabWidget().getChildAt(2).getLayoutParams().height = (screenHeight * 15)/200;
         tabHost.getTabWidget().getChildAt(3).getLayoutParams().height = (screenHeight * 15)/200; 
-
 
     }
 }
