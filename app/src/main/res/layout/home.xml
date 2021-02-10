@@ -95,7 +95,7 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:padding="10dp"
                     >
                     <Button
                         android:layout_width="wrap_content"
@@ -108,7 +108,8 @@
                         android:layout_weight="1"
                         android:id="@+id/spPro"
                         android:backgroundTint="@color/cardview_dark_background"
-                        android:background="@color/black"/>
+                        android:background="@color/black"
+                        android:layout_margin="3dp"/>
                     <Spinner
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
@@ -116,13 +117,14 @@
                         android:id="@+id/spVoice"
                         android:backgroundTint="@color/cardview_dark_background"
                         android:background="@color/black"
+                        android:layout_margin="3dp"
                         />
 
                 </LinearLayout>
 
                 <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:fillViewport="true"
                     android:id="@+id/word_scroll"
                    >
@@ -130,18 +132,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="바보"
-                            android:textColor="@color/black"/>
                         <ListView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/word_list"
-                            >
-
-                        </ListView>
+                            />
                     </LinearLayout>
 
 
@@ -224,69 +219,47 @@
                 android:layout_height="match_parent"
                 android:background="#EDE6cc"
                 android:orientation="vertical">
-                <LinearLayout
-                    android:orientation="horizontal"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    >
-                    <ImageButton
-                        android:layout_width="90dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#EDE6cc"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/lv1" />
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5">
-
-                    </EditText>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
+                    android:text="마이페이지"
+                    android:textColor="@color/black"
+                    android:textSize="30dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"/>
+                <Button
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    >
-                    <ImageButton
-                        android:layout_width="90dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#EDE6cc"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/lv1" />
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5">
-
-                    </EditText>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
+                    android:layout_height="60dp"
+                    android:text="억양/목소리 기본값 설정"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16dp"
+                    android:layout_marginBottom="14dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/setPro"
+                    />
+                <Button
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    >
-                    <ImageButton
-                        android:layout_width="90dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="#EDE6cc"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/lv1" />
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="5">
-
-                    </EditText>
-
-                </LinearLayout>
+                    android:layout_height="60dp"
+                    android:text="회원 정보 수정"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16dp"
+                    android:layout_marginBottom="14dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/setInfo"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:text="프리미엄 구매 / 상태 확인"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/setPre"/>
             </LinearLayout>
         </FrameLayout>
 
