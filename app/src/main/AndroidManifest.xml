@@ -29,6 +29,12 @@
         <activity
             android:name=".HomeActivity">
         </activity>
+        <activity
+            android:name=".DefaultsoundActivity">
+        </activity>
+        <activity
+            android:name=".ModifyActivity">
+        </activity>
 
     </application>
 
