@@ -13,10 +13,16 @@ import android.widget.Spinner;
 import java.lang.reflect.Field;
 
 public class DefaultsoundActivity extends Activity {
+    Button btnSave;
+
+
     @Override
     protected void onCreate(Bundle SavedInstanceState) {
         super.onCreate(SavedInstanceState);
         setContentView(R.layout.defaultsound);
+
+        btnSave = (Button) findViewById(R.id.btnSave);
+
 
         Spinner proSpinner = (Spinner) findViewById(R.id.spPro);
         ArrayAdapter proAdapter = ArrayAdapter.createFromResource(this,
@@ -45,6 +51,14 @@ public class DefaultsoundActivity extends Activity {
         catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
             // silently fail...
         }
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+
+        });
 
     }
 }
