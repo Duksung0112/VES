@@ -121,29 +121,19 @@
                 </LinearLayout>
 
                 <ScrollView
+                    android:id="@+id/scrollView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:fillViewport="true"
+                    android:gravity="top" >
+
+                <LinearLayout
+                    android:id="@+id/foodItemActvity_linearLayout_fragments"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fillViewport="true"
-                    android:id="@+id/word_scroll"
-                   >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="바보"
-                            android:textColor="@color/black"/>
-                        <ListView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/word_list"
-                            >
-
-                        </ListView>
-                    </LinearLayout>
-
+                    android:orientation="vertical" >
+                </LinearLayout>
 
                 </ScrollView>
 
