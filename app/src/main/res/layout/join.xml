@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#EDE6CC"
+    android:background="#fffcf3"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
-            android:background="#faf5e1"
+            android:background="#ffffff"
             android:singleLine="false"/>
 
         <Button

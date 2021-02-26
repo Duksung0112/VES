@@ -22,15 +22,17 @@ public class JoinActivity extends Activity {
         super.onCreate(SavedInstanceState);
         setContentView(R.layout.join);
 
-         radioType= (RadioGroup)findViewById(R.id.radioType);
+        radioType= (RadioGroup)findViewById(R.id.radioType);
         rdStudent = (RadioButton) findViewById(R.id.rdStudent);
         rdTeacher = (RadioButton) findViewById(R.id.rdTeacher);
         btnJoin2 = (Button) findViewById(R.id.btnJoin2);
 
+
+
         btnJoin2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(),MenumainActivity.class);
                 startActivity(intent);
             }
         });
