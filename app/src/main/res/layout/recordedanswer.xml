@@ -6,16 +6,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#EDE6cc"
+    android:background="#fffcf3"
     tools:context=".RecordedanswerActivity">
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="일기장"
+        android:text="녹음일기"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#9E28B3"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"/>
 

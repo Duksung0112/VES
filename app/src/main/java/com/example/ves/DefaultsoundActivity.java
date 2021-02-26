@@ -3,7 +3,9 @@ package com.example.ves;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -12,26 +14,27 @@ import android.widget.Spinner;
 
 import java.lang.reflect.Field;
 
-public class DefaultsoundActivity extends Activity {
+import androidx.fragment.app.Fragment;
+
+public class DefaultsoundActivity extends Fragment {
     Button btnSave;
 
-
     @Override
-    protected void onCreate(Bundle SavedInstanceState) {
-        super.onCreate(SavedInstanceState);
-        setContentView(R.layout.defaultsound);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-        btnSave = (Button) findViewById(R.id.btnSave);
+        View view = inflater.inflate(R.layout.defaultsound, container, false);
 
+        btnSave = (Button) view.findViewById(R.id.btnSave);
 
-        Spinner proSpinner = (Spinner) findViewById(R.id.spPro);
-        ArrayAdapter proAdapter = ArrayAdapter.createFromResource(this,
+        Spinner proSpinner = (Spinner) view.findViewById(R.id.spPro);
+        ArrayAdapter proAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.pronounce_choice, android.R.layout.simple_spinner_item);
         proAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         proSpinner.setAdapter(proAdapter);
 
-        Spinner voiceSpinner = (Spinner) findViewById(R.id.spVoice);
-        ArrayAdapter voiceAdapter = ArrayAdapter.createFromResource(this,
+        Spinner voiceSpinner = (Spinner) view.findViewById(R.id.spVoice);
+        ArrayAdapter voiceAdapter = ArrayAdapter.createFromResource(getActivity(),
                 R.array.voice_choice, android.R.layout.simple_spinner_item);
         voiceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         voiceSpinner.setAdapter(voiceAdapter);
@@ -60,5 +63,8 @@ public class DefaultsoundActivity extends Activity {
 
         });
 
+        return view;
+
     }
+
 }

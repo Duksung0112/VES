@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -28,6 +29,9 @@ public class VocabularyActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.vocabulary, container, false);
+
+        Button quizbt = (Button)view.findViewById(R.id.quizbt);
+
         ListView listView = (ListView)view.findViewById(R.id.word_list);
         final ArrayList<String> wordList = new ArrayList<>();
 
@@ -104,6 +108,15 @@ public class VocabularyActivity extends Fragment {
         catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
             // silently fail...
         }
+
+        quizbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.container, new QuizActivity()).commit();
+
+            }
+
+        });
 
 
         // Inflate the layout for this fragment

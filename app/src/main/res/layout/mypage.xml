@@ -5,9 +5,10 @@
     android:id="@+id/tabMy"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDE6cc"
+    android:background="#fffcf3"
     android:orientation="vertical"
-    tools:context=".MypageActivity">
+    tools:context=".MypageActivity"
+    >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +30,7 @@
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:id="@+id/setPro"
+        android:backgroundTint="#8c8d91"
         />
     <Button
         android:layout_width="match_parent"
@@ -39,6 +41,7 @@
         android:layout_marginBottom="14dp"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
+        android:backgroundTint="#f7dc4f"
         android:id="@+id/setInfo"/>
     <Button
         android:layout_width="match_parent"

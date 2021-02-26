@@ -22,10 +22,12 @@ public class JoinActivity extends Activity {
     protected void onCreate(Bundle SavedInstanceState){
         super.onCreate(SavedInstanceState);
         setContentView(R.layout.join);
-         radioType= (RadioGroup)findViewById(R.id.radioType);
+        radioType= (RadioGroup)findViewById(R.id.radioType);
         rdStudent = (RadioButton) findViewById(R.id.rdStudent);
         rdTeacher = (RadioButton) findViewById(R.id.rdTeacher);
         btnJoin2 = (Button) findViewById(R.id.btnJoin2);
+
+
 
         btnJoin2.setOnClickListener(new View.OnClickListener() {
             @Override
