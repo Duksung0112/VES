@@ -13,7 +13,6 @@ public class JoinActivity extends Activity {
     TextView tvId, tvPw , tvPwcheck, tvName, tvType;
     EditText edtId, edtPw , edtPwcheck, edtName;
     Button btnIdcheck , btnJoin2;
-
     RadioGroup radioType;
     RadioButton rdStudent;
     RadioButton rdTeacher;
@@ -22,6 +21,7 @@ public class JoinActivity extends Activity {
     protected void onCreate(Bundle SavedInstanceState){
         super.onCreate(SavedInstanceState);
         setContentView(R.layout.join);
+
         radioType= (RadioGroup)findViewById(R.id.radioType);
         rdStudent = (RadioButton) findViewById(R.id.rdStudent);
         rdTeacher = (RadioButton) findViewById(R.id.rdTeacher);
@@ -38,10 +38,7 @@ public class JoinActivity extends Activity {
         });
 
 
-
-
     }
-
 
 }
 
