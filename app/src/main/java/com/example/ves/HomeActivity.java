@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListPopupWindow;
 import android.widget.ListView;
@@ -37,7 +38,20 @@ public class HomeActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.home, container, false);
+        View view = inflater.inflate(R.layout.home, container, false);
+
+        ImageButton imglv1 = (ImageButton)view.findViewById(R.id.imglv1);
+
+        imglv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.container, new NewsActivity()).commit();
+
+            }
+        });
+
+
+        return view;
     }
 
 }

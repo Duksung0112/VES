@@ -27,12 +27,7 @@
             android:name=".JoinActivity">
         </activity>
         <activity android:name=".MenumainActivity"/>
-        <activity
-            android:name=".DefaultsoundActivity">
-        </activity>
-        <activity
-            android:name=".ModifyActivity">
-        </activity>
+
 
 
     </application>
