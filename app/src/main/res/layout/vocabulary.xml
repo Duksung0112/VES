@@ -5,7 +5,7 @@
     android:id="@+id/tabWord"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EDE6cc"
+    android:background="#fffcf3"
     android:orientation="vertical"
     tools:context=".VocabularyActivity">
     <LinearLayout
@@ -19,22 +19,24 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="QUIZ"
+            android:backgroundTint="#f7dc4f"
+            android:textColor="@color/black"
             android:id="@+id/quizbt"/>
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
             android:id="@+id/spPro"
-            android:backgroundTint="@color/cardview_dark_background"
-            android:background="@color/black"
+            android:backgroundTint="#8c8d91"
+            android:background="#8c8d91"
             android:layout_margin="3dp"/>
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
             android:id="@+id/spVoice"
-            android:backgroundTint="@color/cardview_dark_background"
-            android:background="@color/black"
+            android:backgroundTint="#8c8d91"
+            android:background="#8c8d91"
             android:layout_margin="3dp"
             />
 
