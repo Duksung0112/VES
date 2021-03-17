@@ -42,8 +42,27 @@ public class HomeActivity extends Fragment {
         View view = inflater.inflate(R.layout.home, container, false);
 
         ImageButton imglv1 = (ImageButton)view.findViewById(R.id.imglv1);
+        ImageButton imglv2 = (ImageButton)view.findViewById(R.id.imglv2);
+        ImageButton imglv3 = (ImageButton)view.findViewById(R.id.imglv3);
 
         imglv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                getFragmentManager().beginTransaction().replace(R.id.container, new NewsActivity()).commit();
+
+            }
+        });
+
+        imglv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.container, new NewsActivity()).commit();
+
+            }
+        });
+
+        imglv3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction().replace(R.id.container, new NewsActivity()).commit();

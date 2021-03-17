@@ -42,7 +42,8 @@
                         android:layout_weight="1"
                         android:background="#EDE6cc"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/lv2" />
+                        android:src="@drawable/lv2"
+                        android:id="@+id/imglv2"/>
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -63,7 +64,8 @@
                         android:layout_weight="1"
                         android:background="#EDE6cc"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/lv3" />
+                        android:src="@drawable/lv3"
+                        android:id="@+id/imglv3"/>
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
