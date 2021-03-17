@@ -27,69 +27,13 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 
 public class HomeActivity extends TabActivity {
-    Button setPro, setInfo, setPre;
+
 
     @Override
     protected void onCreate(Bundle SavedInstanceState) {
 
         super.onCreate(SavedInstanceState);
         setContentView(R.layout.home);
-
-        setPro = (Button) findViewById(R.id.setPro);
-        setInfo = (Button) findViewById(R.id.setInfo);
-        setPre = (Button) findViewById(R.id.setPre);
-
-
-        ListView listView = (ListView) findViewById(R.id.word_list);
-        final ArrayList<String> wordList = new ArrayList<>();
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, wordList)
-        {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent)
-
-              {
-
-                  View view = super.getView(position, convertView, parent);
-
-                  TextView tv = (TextView) view.findViewById(android.R.id.text1);
-
-                  tv.setTextColor(Color.BLACK);
-
-                  return view;
-            
-               }
-
-
-        };
-        listView.setAdapter(adapter);
-
-        wordList.add("사과");
-        wordList.add("배");
-        wordList.add("사과");
-        wordList.add("배");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-
-
 
 
         TabHost tabHost = getTabHost();
@@ -162,21 +106,7 @@ public class HomeActivity extends TabActivity {
             // silently fail...
         }
 
-         setPro.setOnClickListener(new View.OnClickListener() {
-                     @Override
-                     public void onClick(View view) {
-                         Intent intent = new Intent(getApplicationContext(),DefaultsoundActivity.class);
-                         startActivity(intent);
-                     }
-                 });
 
-        setInfo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(getApplicationContext(),ModifyActivity.class);
-                        startActivity(intent);
-                    }
-                });
 
 
     }

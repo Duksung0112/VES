@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/tabHome"
+        android:enabled="true"
+        app:showAsAction="ifRoom"
+        android:title="홈"
+        android:icon="@drawable/ic_baseline_home_24"/>
+
+    <item android:id="@+id/tabWord"
+        app:showAsAction="ifRoom"
+        android:title="단어장"
+        android:icon="@drawable/ic_baseline_menu_book_24"/>
+
+    <item android:id="@+id/tabMic"
+        app:showAsAction="ifRoom"
+        android:title="녹음일기"
+        android:icon="@drawable/ic_baseline_mic_24"/>
+
+    <item android:id="@+id/tabMy"
+        app:showAsAction="ifRoom"
+        android:title="마이페이지"
+        android:icon="@drawable/ic_baseline_perm_identity_24"/>
+
+</menu>
