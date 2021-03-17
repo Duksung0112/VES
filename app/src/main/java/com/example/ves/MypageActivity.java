@@ -1,47 +1,55 @@
 package com.example.ves;
+
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
+import com.example.ves.R;
 
-public class MypageActivity extends FragmentActivity {
-    Button setPro, setInfo, setPre;
+
+public class MypageActivity extends Fragment {
+
+    public MypageActivity() {
+        // Required empty public constructor
+    }
+
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.mypage,
+                container, false);
 
-        setPro = (Button) findViewById(R.id.setPro);
-        setInfo = (Button) findViewById(R.id.setInfo);
-        setPre = (Button) findViewById(R.id.setPre);
+
+        Button setPro = (Button)view.findViewById(R.id.setPro);
+        Button setInfo = (Button)view.findViewById(R.id.setInfo);
+        Button setPre = (Button)view.findViewById(R.id.setPre);
 
         setPro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), DefaultsoundActivity.class);
-                startActivity(intent);
+
+                getFragmentManager().beginTransaction().replace(R.id.container, new DefaultsoundActivity()).commit();
+
             }
         });
 
         setInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ModifyActivity.class);
-                startActivity(intent);
+
+                getFragmentManager().beginTransaction().replace(R.id.container, new ModifyActivity()).commit();
+
             }
         });
-    }
 
-
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.menumain, container, false);
-
-
+        return view;
     }
 
 }

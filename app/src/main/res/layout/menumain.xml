@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+
+    tools:context=".MenumainActivity">
 
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        android:layout_height="680dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -21,9 +23,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:backgroundTint="#fffcf3"
         app:itemBackground="@color/cardview_shadow_end_color"
-        app:itemIconTint="#ffffff"
-        app:itemTextColor="#ffffff"
+        app:itemIconTint="#8c8d91"
+        app:itemTextColor="#8c8d91"
         app:menu="@menu/tabmenu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

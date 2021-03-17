@@ -8,18 +8,20 @@
         android:icon="@drawable/ic_baseline_home_24"/>
 
     <item android:id="@+id/tabWord"
+        android:enabled="true"
         app:showAsAction="ifRoom"
         android:title="단어장"
         android:icon="@drawable/ic_baseline_menu_book_24"/>
 
     <item android:id="@+id/tabMic"
+        android:enabled="true"
         app:showAsAction="ifRoom"
         android:title="녹음일기"
         android:icon="@drawable/ic_baseline_mic_24"/>
 
     <item android:id="@+id/tabMy"
+        android:enabled="true"
         app:showAsAction="ifRoom"
         android:title="마이페이지"
         android:icon="@drawable/ic_baseline_perm_identity_24"/>
-
 </menu>

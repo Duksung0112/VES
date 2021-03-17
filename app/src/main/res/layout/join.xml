@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#EDE6CC"
+    android:background="#fffcf3"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,17 +44,18 @@
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
-            android:background="#faf5e1"
+            android:background="#E1E3E4"
             android:singleLine="false"/>
 
         <Button
             android:id="@+id/btnIdcheck"
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:backgroundTint="#a9c4f3"
+            android:backgroundTint="#f7dc4f"
             android:textSize="7dp"
             android:textAlignment="textStart"
-            android:text="중복 확인" />
+            android:text="중복 확인"
+            android:textColor="#000000"/>
     </LinearLayout>
 
     <LinearLayout
@@ -78,7 +79,7 @@
             android:layout_width="230dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
-            android:background="#faf5e1"
+            android:background="#E1E3E4"
             android:inputType="textPassword"/>
 
 
@@ -105,7 +106,7 @@
             android:layout_width="230dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
-            android:background="#faf5e1"
+            android:background="#E1E3E4"
             android:inputType="textPassword"/>
 
 
@@ -132,7 +133,7 @@
             android:layout_width="230dp"
             android:layout_height="match_parent"
             android:textColor="#000000"
-            android:background="#faf5e1"
+            android:background="#E1E3E4"
             android:singleLine="false"/>
 
     </LinearLayout>
@@ -197,9 +198,11 @@
             android:id="@+id/btnJoin2"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:backgroundTint="#a9c4f3"
+            android:backgroundTint="#f7dc4f"
             android:layout_marginTop="40dp"
-            android:text="JOIN"/>
+            android:text="JOIN"
+            android:textColor="#000000"
+            android:textSize="20dp"/>
     </LinearLayout>
 
 </LinearLayout>
