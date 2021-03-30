@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fffcf3"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LV 1"
+        android:textColor="@color/black"
+        android:textSize="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/lv"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:id="@+id/artPro"
+            android:backgroundTint="#8c8d91"
+            android:background="#8c8d91"
+            android:layout_margin="3dp"/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:id="@+id/artVoice"
+            android:backgroundTint="#8c8d91"
+            android:background="#8c8d91"
+            android:layout_margin="3dp"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#f7dc4f"
+            android:src="@drawable/ic_baseline_play_arrow_24"
+            android:layout_margin="10dp"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#f7dc4f"
+            android:src="@drawable/ic_baseline_pause_24"
+            android:layout_margin="10dp"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#f7dc4f"
+            android:src="@drawable/ic_baseline_stop_24"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:text="기사 들어갈 부분"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="질문 들어갈 부분"
+        android:textColor="@color/black"/>
+
+
+</LinearLayout>

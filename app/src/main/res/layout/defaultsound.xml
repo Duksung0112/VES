@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fffcf3"
+    >
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fffcf3"
+    android:orientation="vertical"
+        android:id="@+id/defaultsoundfragment"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="억양/목소리 기본값 설정"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_margin="25dp" />
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/spPro"
+        android:backgroundTint="#8c8d91"
+        android:background="#8c8d91"
+        android:layout_margin="25dp"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/spVoice"
+        android:backgroundTint="#8c8d91"
+        android:background="#8c8d91"
+        android:layout_margin="25dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:id="@+id/btnSave"
+        android:text="저장"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="210dp"
+        android:backgroundTint="#f7dc4f"
+        android:textSize="17dp"
+        />
+
+</LinearLayout>
+</FrameLayout>
