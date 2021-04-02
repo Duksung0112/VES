@@ -12,7 +12,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:id="@+id/lo1">
 
                     <ImageButton
                         android:layout_width="90dp"
@@ -37,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:id="@+id/lo2"
         >
             <ImageButton
                         android:layout_width="90dp"
@@ -61,6 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/lo3"
                     >
                     <ImageButton
                         android:layout_width="90dp"
