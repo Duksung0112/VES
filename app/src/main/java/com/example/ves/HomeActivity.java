@@ -8,14 +8,11 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
 import java.io.IOException;
-
 import androidx.fragment.app.Fragment;
 
 public class HomeActivity extends Fragment {
@@ -66,21 +63,24 @@ public class HomeActivity extends Fragment {
         });
 
 
-        String url = "https://sports.news.naver.com/wfootball/index.nhn";
+        String url = "https://www.theguardian.com/international";
         Document doc = null;
         try {
             doc = Jsoup.connect(url).get();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Elements element = doc.select("div.home_news");
+        Elements element = doc.select("div.fc-container--rolled-up-hide most-popular__container");
         //String title = element.select("h2").text().substring(0,4);
         //System.out.println("스포츠 "+title);
         //System.out.println("===========================");
-        for (Element el : element.select("li")) {
+        for (Element el : element.select("h3")) {
             System.out.println(el.text());
             tvlv1.setText(el.text());
         }
+
+
+
         //System.out.println("===========================");
 
         return view;

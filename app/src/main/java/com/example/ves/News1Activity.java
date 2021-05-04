@@ -8,6 +8,13 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+
 public class News1Activity extends Fragment {
     TextView lv;
 
