@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -37,7 +38,31 @@ public class HomeActivity extends Fragment {
         TextView tvlv1 = (TextView)view.findViewById(R.id.tvlv1);
         TextView tvlv2 = (TextView)view.findViewById(R.id.tvlv2);
         TextView tvlv3 = (TextView)view.findViewById(R.id.tvlv3);
+        LinearLayout lo1 = (LinearLayout)view.findViewById(R.id.lo1);
+        LinearLayout lo2 = (LinearLayout)view.findViewById(R.id.lo2);
+        LinearLayout lo3 = (LinearLayout)view.findViewById(R.id.lo3);
 
+
+        lo1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.container, new News1Activity()).commit();
+            }
+        });
+
+        lo2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.container, new News2Activity()).commit();
+            }
+        });
+
+        lo3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.container, new News3Activity()).commit();
+            }
+        });
 
         imglv1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,15 +95,12 @@ public class HomeActivity extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Elements element = doc.select("div.fc-container--rolled-up-hide most-popular__container");
-        //String title = element.select("h2").text().substring(0,4);
-        //System.out.println("스포츠 "+title);
-        //System.out.println("===========================");
-        for (Element el : element.select("h3")) {
-            System.out.println(el.text());
-            tvlv1.setText(el.text());
-        }
 
+        Elements element = doc.select("div.fc-container__inner");
+
+        Element el = element.select("h3.fc-item__title").first();
+        //System.out.println(el.text());
+        tvlv1.setText(el.text());
 
 
         //System.out.println("===========================");

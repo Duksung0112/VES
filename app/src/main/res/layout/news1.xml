@@ -70,11 +70,14 @@
             android:layout_margin="10dp"/>
     </LinearLayout>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:text="기사 들어갈 부분"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:id="@+id/newscontent"
+        android:scrollbars="vertical"
+        android:textIsSelectable="true"/>
 
     <EditText
         android:layout_width="match_parent"
