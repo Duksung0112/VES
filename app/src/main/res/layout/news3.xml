@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LV 3"
+        android:text="TOP 3"
         android:textColor="@color/black"
         android:textSize="40dp"
         android:layout_marginTop="15dp"
@@ -70,17 +70,40 @@
             android:layout_margin="10dp"/>
     </LinearLayout>
 
-    <EditText
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:text="기사 들어갈 부분"
-        android:textColor="@color/black"/>
+        android:id="@+id/newscontent"
+        android:textColor="@color/black"
+        android:scrollbars="vertical"
+        android:textIsSelectable="true"
+        android:layout_marginBottom="20dp"/>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="질문 들어갈 부분"
-        android:textColor="@color/black"/>
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="질문 들어갈 부분"
+            android:textColor="@color/black"
+            android:id="@+id/question"
+            android:layout_marginRight="15dp"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_record_voice_over_24"
+            android:background="#f7dc4f"
+
+            />
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>
