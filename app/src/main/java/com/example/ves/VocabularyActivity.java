@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class VocabularyActivity extends Fragment {
 
+    String word, wordmean;
+
     public VocabularyActivity() {
         // Required empty public constructor
     }
@@ -38,10 +40,20 @@ public class VocabularyActivity extends Fragment {
         MyAdapter mMyAdapter = new MyAdapter();
 
 
+        if (getArguments() != null)
+        {
+            word = getArguments().getString("word"); // 프래그먼트1에서 받아온 값 넣기
+            wordmean = getArguments().getString("wordmean"); // 프래그먼트1에서 받아온 값 넣기
 
-        for (int i=0;i<20;i++) {
-            mMyAdapter.addItem("name_" + i, "contents_" + i);
+            mMyAdapter.addItem(word, wordmean);
         }
+
+
+
+
+
+
+
 
 
         listView.setAdapter(mMyAdapter);
