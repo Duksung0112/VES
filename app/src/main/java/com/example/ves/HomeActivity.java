@@ -103,8 +103,6 @@ public class HomeActivity extends Fragment {
         tvlv1.setText(el.text());
 
 
-        //System.out.println("===========================");
-
         return view;
     }
 
