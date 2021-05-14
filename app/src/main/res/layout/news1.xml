@@ -77,8 +77,9 @@
         android:textColor="@color/black"
         android:id="@+id/newscontent"
         android:scrollbars="vertical"
-        android:textIsSelectable="true"
-        android:layout_marginBottom="20dp"/>
+        android:textIsSelectable="false"
+        android:layout_marginBottom="20dp"
+        android:focusable="true"/>
 
 
 
@@ -93,7 +94,8 @@
             android:text="질문 들어갈 부분"
             android:textColor="@color/black"
             android:id="@+id/question"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginRight="15dp"
+            />
 
         <ImageButton
             android:layout_width="wrap_content"
