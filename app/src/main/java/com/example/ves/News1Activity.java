@@ -2,6 +2,7 @@ package com.example.ves;
 
 import android.Manifest;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.gesture.GestureOverlayView;
 import android.graphics.Color;
 import android.os.Build;
@@ -60,15 +61,18 @@ public class News1Activity extends Fragment {
     final int PERMISSION = 1;
     GestureDetector gestureDetector = null;
     String selectedword;
+    VocaHelper openHelper;
+    SQLiteDatabase db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.news1, container, false);
-
         lv = (TextView) view.findViewById(R.id.lv);
         newscontent = (TextView) view.findViewById(R.id.newscontent);
         question = (TextView) view.findViewById(R.id.question);
+        openHelper = new VocaHelper(getActivity());
+        db = openHelper.getWritableDatabase();
 
         newscontent.setMovementMethod(new ScrollingMovementMethod());
 
@@ -357,6 +361,8 @@ public class News1Activity extends Fragment {
             case 1 :// 단어장에 추가 선택시
                 //Toast.makeText(getContext(), selectedword, Toast.LENGTH_SHORT).show();
 
+                /*
+
                 Bundle bundle = new Bundle(); // 번들을 통해 값 전달
                 bundle.putString("word", selectedword);//번들에 넘길 값 저장
                 String wordurl = "https://dic.daum.net/search.do?q=" + selectedword;
@@ -375,6 +381,30 @@ public class News1Activity extends Fragment {
                 fragment2.setArguments(bundle);//번들을 프래그먼트2로 보낼 준비
                 transaction.replace(R.id.container, fragment2);
                 transaction.commit();
+
+
+                 */
+
+
+                String wordurl = "https://dic.daum.net/search.do?q=" + selectedword;
+                Document worddoc = null;
+                try {
+                    worddoc = Jsoup.connect(wordurl).get();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Elements wordelement = worddoc.select("div.card_word");
+                Elements el = wordelement.select("ul.list_search");
+                Element selectedwordmean = el.get(0);
+
+                String eng = selectedword;
+                String kor = selectedwordmean.text();
+
+
+                String sql = "insert into voca(eng, kor) values('" + eng + "','" + kor + "');";
+                db.execSQL(sql);
+                Toast.makeText(getActivity(), "단어가 저장되었습니다.", Toast.LENGTH_SHORT).show();
+
 
 
                 return true;

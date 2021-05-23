@@ -69,20 +69,25 @@ public class JoinActivity extends Activity {
             public void onClick(View view) {
                 String userid2 = edtId.getText().toString();
                 String pw = edtPw.getText().toString();
+                String pwcheck = edtPwcheck.getText().toString();
                 String username = edtName.getText().toString();
                 String sql2 = "select * from user where userid = '" + userid2+"';";
                 Cursor cursor2 = db.rawQuery(sql2, null);
-                if(cursor2.getCount() == 1) {
+                if(edtId.getText().length() == 0||edtPw.getText().length() == 0||edtPwcheck.getText().length() == 0||edtName.getText().length() == 0) {
+                    Toast.makeText(JoinActivity.this, "빈 항목을 확인해주세요.", Toast.LENGTH_SHORT).show();
+
+                } else if (cursor2.getCount() == 1) {
                     Toast.makeText(JoinActivity.this, "이미 존재하는 ID입니다.", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else if (edtPw.getText().toString().equals(edtPwcheck.getText().toString())) {
+
+                } else if (edtPw.getText().toString().equals(edtPwcheck.getText().toString())==false) {
+                    Toast.makeText(JoinActivity.this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
+
+                } else {
                     String sql3 = "insert into user(userid, pw, username, usertype) values('" + userid2 + "','" + pw + "','" + username + "'," + usertype + ");";
                     db.execSQL(sql3);
                     Toast.makeText(JoinActivity.this, "회원가입을 축하합니다", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(JoinActivity.this, MainActivity.class));
-                } else {
-                    Toast.makeText(JoinActivity.this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
-                    finish();
+
                 }
                 cursor2.close();
 
