@@ -52,7 +52,7 @@ public class News3Activity extends Fragment {
             e.printStackTrace();
         }
 
-        Elements element2 = doc2.select("div.css-8bpe6e");
+        Elements element2 = doc2.select("div.dcr-zs6acm");
         System.out.println(element2.text());
         newscontent.setText(element2.text());
 
