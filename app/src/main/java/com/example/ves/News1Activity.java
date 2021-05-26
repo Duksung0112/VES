@@ -76,7 +76,7 @@ public class News1Activity extends Fragment {
 
         newscontent.setMovementMethod(new ScrollingMovementMethod());
 
-/*
+ /*
 
         Spannable span = Spannable.Factory.getInstance().newSpannable("click");
         String text = span.toString();
@@ -91,7 +91,7 @@ public class News1Activity extends Fragment {
         newscontent.setMovementMethod(LinkMovementMethod.getInstance());
 
 
-*/
+ */
 
         String url = "https://www.theguardian.com/international";
         Document doc = null;
