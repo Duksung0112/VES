@@ -1,6 +1,8 @@
 package com.example.ves;
 import android.graphics.Color;
 import android.os.Bundle;
+
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,57 +30,21 @@ public class VocabularyActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.vocabulary, container, false);
-
         Button quizbt = (Button)view.findViewById(R.id.quizbt);
 
         ListView listView = (ListView)view.findViewById(R.id.word_list);
-        final ArrayList<String> wordList = new ArrayList<>();
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, wordList)
-        {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent)
-
-            {
-
-                View view = super.getView(position, convertView, parent);
-
-                TextView tv = (TextView) view.findViewById(android.R.id.text1);
-
-                tv.setTextColor(Color.BLACK);
-
-                return view;
-
-            }
+        MyAdapter mMyAdapter = new MyAdapter();
 
 
-        };
-        listView.setAdapter(adapter);
 
-        wordList.add("사과");
-        wordList.add("배");
-        wordList.add("사과");
-        wordList.add("배");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("사과");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
-        wordList.add("배");
+        for (int i=0;i<20;i++) {
+            mMyAdapter.addItem("name_" + i, "contents_" + i);
+        }
+
+
+        listView.setAdapter(mMyAdapter);
+
 
 
         Spinner proSpinner = (Spinner) view.findViewById(R.id.spPro);

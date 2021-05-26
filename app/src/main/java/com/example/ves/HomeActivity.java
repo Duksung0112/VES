@@ -98,9 +98,21 @@ public class HomeActivity extends Fragment {
 
         Elements element = doc.select("div.fc-container__inner");
 
-        Element el = element.select("h3.fc-item__title").first();
+        Elements el = element.select("h3.fc-item__title");
+
+        Element el1 = el.get(0);
         //System.out.println(el.text());
-        tvlv1.setText(el.text());
+        tvlv1.setText(el1.text());
+
+
+        Element el2 = el.get(1);
+        //System.out.println(el.text());
+        tvlv2.setText(el2.text());
+
+
+        Element el3 = el.get(2);
+        //System.out.println(el.text());
+        tvlv3.setText(el3.text());
 
 
         return view;
