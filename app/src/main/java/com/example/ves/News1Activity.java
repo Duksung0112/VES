@@ -2,9 +2,12 @@ package com.example.ves;
 
 import android.Manifest;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.gesture.GestureOverlayView;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
@@ -16,7 +19,11 @@ import android.text.style.BackgroundColorSpan;
 import android.text.style.ClickableSpan;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +46,8 @@ import java.util.Random;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -56,9 +65,12 @@ public class News1Activity extends Fragment {
     Intent intent;
     SpeechRecognizer mRecognizer;
     ImageButton voiceRecord;
-    TextView sttResult;
+    TextView sttResult, newscontent, question;
     final int PERMISSION = 1;
-
+    GestureDetector gestureDetector = null;
+    String selectedword;
+    VocaHelper openHelper;
+    SQLiteDatabase db;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,11 +80,12 @@ public class News1Activity extends Fragment {
         View view = inflater.inflate(R.layout.news1, container, false);
 
         lv = (TextView) view.findViewById(R.id.lv);
-        TextView newscontent = (TextView) view.findViewById(R.id.newscontent);
-        TextView question = (TextView) view.findViewById(R.id.question);
+        newscontent = (TextView) view.findViewById(R.id.newscontent);
+        question = (TextView) view.findViewById(R.id.question);
+        openHelper = new VocaHelper(getActivity());
+        db = openHelper.getWritableDatabase();
 
         newscontent.setMovementMethod(new ScrollingMovementMethod());
-
 
 /*
 
@@ -93,7 +106,6 @@ public class News1Activity extends Fragment {
 
 
 */
-
 
         String url = "https://www.theguardian.com/international";
         Document doc = null;
@@ -117,8 +129,35 @@ public class News1Activity extends Fragment {
         }
 
         Elements element2 = doc2.select("div.css-8bpe6e");
-        System.out.println(element2.text());
         newscontent.setText(element2.text());
+
+
+        newscontent.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                switch (v.getId()) {
+                    case R.id.newscontent:
+                        newscontent.setTextIsSelectable(true);
+                        break;
+                }
+                return false;
+            }
+        });
+
+
+
+        gestureDetector = new GestureDetector(getActivity(), new GestureListener());
+
+        newscontent.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                gestureDetector.onTouchEvent(event);
+                return false;
+            }
+        });
+
+
 
         List<String> qValues = new ArrayList<>();
 
@@ -149,6 +188,10 @@ public class News1Activity extends Fragment {
             mRecognizer.setRecognitionListener(listener);
             mRecognizer.startListening(intent);
         });
+
+        registerForContextMenu(newscontent);
+
+
         return view;
     }
 
@@ -212,5 +255,182 @@ public class News1Activity extends Fragment {
         public void onEvent(int eventType, Bundle params) {} };
 
 
+    public int getIndex(TextView view, MotionEvent event) {
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+
+        x -= view.getTotalPaddingLeft();
+        y -= view.getTotalPaddingTop();
+
+        x += view.getScrollX();
+        y += view.getScrollY();
+
+        Layout layout = view.getLayout();
+
+        int line = layout.getLineForVertical(y);
+        int offset = layout.getOffsetForHorizontal(line, x);
+
+        return offset;
+    }
+
+    public String chooseWord(int offset){
+
+        String strWord="";
+
+        for(int i=offset-1;;i--){     //선택한 글자(알파벳하나)가 포함된 단어의 앞부분 받아오기
+
+            String a=String.valueOf(newscontent.getText().charAt(i));
+
+            if(!a.equals(" ")&&!a.equals(",") &&!a.equals("]")&&!a.equals(")")&&!a.equals("`")&&!a.equals("?")&&!a.equals(".")&&!a.equals("/")&&!a.equals(";")&&!a.equals(":")){
+
+                strWord=a+strWord;
+
+                //    Log.d("offset","offset "+offset);
+
+                //    Log.d("offset","word "+strWord);
+
+            }
+
+            else
+
+                break;
+
+        }
+
+        for(int i=offset;;i++){   //선택한 글자(알파벳하나)가 포함된 단어의 뒷부분 받아오기
+
+            String a=String.valueOf(newscontent.getText().charAt(i));
+
+            if(!a.equals(" ")&&!a.equals(",") &&!a.equals("]")&&!a.equals(")")&&!a.equals("`")&&!a.equals("?")&&!a.equals(".")&&!a.equals("/")&&!a.equals(";")&&!a.equals(":")){
+                strWord=strWord+a;
+
+                //    Log.d("offset","offset "+offset);
+
+                //    Log.d("offset","word "+strWord);
+
+            }
+
+            else
+
+                break;
+
+        }
+
+        return strWord;
+
+    }
+
+    private class GestureListener implements GestureDetector.OnGestureListener {
+
+        public GestureListener() {
+        }
+
+        @Override
+        public boolean onDown(MotionEvent motionEvent) {
+            return false;
+        }
+
+        @Override
+        public void onShowPress(MotionEvent motionEvent) {
+            int offset = getIndex(newscontent, motionEvent);
+            System.out.println(chooseWord(offset));
+            selectedword = chooseWord(offset);
+
+        }
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent motionEvent) {
+            return false;
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent2, float v, float v2) {
+            return false;
+        }
+
+        @Override
+        public void onLongPress(MotionEvent motionEvent) {
+
+        }
+        @Override
+        public boolean onFling(MotionEvent event1, MotionEvent event2, float velocityX, float velocityY) {
+            return false;
+        }
+    }
+
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+
+        menu.clear();
+        menu.add(0, 1, 100, "단어장에 추가");
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        // 롱클릭했을 때 나오는 context Menu 의 항목을 선택(클릭) 했을 때 호출
+        switch(item.getItemId()) {
+            case 1 :// 단어장에 추가 선택시
+                //Toast.makeText(getContext(), selectedword, Toast.LENGTH_SHORT).show();
+
+                /*
+
+                Bundle bundle = new Bundle(); // 번들을 통해 값 전달
+                bundle.putString("word", selectedword);//번들에 넘길 값 저장
+                String wordurl = "https://dic.daum.net/search.do?q=" + selectedword;
+                Document worddoc = null;
+                try {
+                    worddoc = Jsoup.connect(wordurl).get();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Elements wordelement = worddoc.select("div.card_word");
+                Elements el = wordelement.select("ul.list_search");
+                Element selectedwordmean = el.get(0);
+                bundle.putString("wordmean", selectedwordmean.text());//번들에 넘길 값 저장
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                VocabularyActivity fragment2 = new VocabularyActivity();//프래그먼트2 선언
+                fragment2.setArguments(bundle);//번들을 프래그먼트2로 보낼 준비
+                transaction.replace(R.id.container, fragment2);
+                transaction.commit();
+
+
+                 */
+
+
+                String wordurl = "https://dic.daum.net/search.do?q=" + selectedword;
+                Document worddoc = null;
+                try {
+                    worddoc = Jsoup.connect(wordurl).get();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Elements wordelement = worddoc.select("div.card_word");
+                Elements el = wordelement.select("ul.list_search");
+                Element selectedwordmean = el.get(0);
+
+                String eng = selectedword;
+                String kor = selectedwordmean.text();
+
+
+                String sql = "insert into voca(eng, kor) values('" + eng + "','" + kor + "');";
+                db.execSQL(sql);
+                Toast.makeText(getActivity(), "단어가 저장되었습니다.", Toast.LENGTH_SHORT).show();
+
+
+
+                return true;
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
+
+
+
 
 }
+
