@@ -1,12 +1,15 @@
 package com.example.ves;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.gesture.GestureOverlayView;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -17,6 +20,8 @@ import android.text.method.LinkMovementMethod;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -26,9 +31,12 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListPopupWindow;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,8 +46,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import androidx.annotation.NonNull;
@@ -56,13 +67,19 @@ public class News1Activity extends Fragment {
     TextView lv;
     Intent intent;
     SpeechRecognizer mRecognizer;
-    ImageButton voiceRecord;
+    ImageButton voiceRecord, imgbPlay, imgbPause, imgbStop;
     TextView sttResult, newscontent, question;
     final int PERMISSION = 1;
     GestureDetector gestureDetector = null;
     String selectedword;
     VocaHelper openHelper;
     SQLiteDatabase db;
+    private TextToSpeech tts;
+    private int standbyIndex = 0;
+    private int lastPlayIndex = 0;
+    private final Bundle params = new Bundle();
+    private PlayState playState = PlayState.STOP;
+    Elements element3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,25 +90,41 @@ public class News1Activity extends Fragment {
         question = (TextView) view.findViewById(R.id.question);
         openHelper = new VocaHelper(getActivity());
         db = openHelper.getWritableDatabase();
+        imgbPlay = (ImageButton) view.findViewById(R.id.imgbPlay);
+        imgbPause = (ImageButton) view.findViewById(R.id.imgbPause);
+        imgbStop = (ImageButton) view.findViewById(R.id.imgbStop);
 
         newscontent.setMovementMethod(new ScrollingMovementMethod());
 
- /*
 
-        Spannable span = Spannable.Factory.getInstance().newSpannable("click");
-        String text = span.toString();
+        Spinner proSpinner = (Spinner) view.findViewById(R.id.spPro);
+        ArrayAdapter proAdapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.pronounce_choice, android.R.layout.simple_spinner_item);
+        proAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        proSpinner.setAdapter(proAdapter);
 
-        int start = text.indexOf("click");
-        int end = start + "click".length();
-        span.setSpan(new UnderlineSpan()
-                , start, end, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        Spinner voiceSpinner = (Spinner) view.findViewById(R.id.spVoice);
+        ArrayAdapter voiceAdapter = ArrayAdapter.createFromResource(getActivity(),
+                R.array.voice_choice, android.R.layout.simple_spinner_item);
+        voiceAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        voiceSpinner.setAdapter(voiceAdapter);
 
-        newscontent.setText(span);
-        newscontent.setHighlightColor(Color.TRANSPARENT);
-        newscontent.setMovementMethod(LinkMovementMethod.getInstance());
+        try {
+            Field popup = Spinner.class.getDeclaredField("mPopup");
+            popup.setAccessible(true);
 
+            // Get private mPopup member variable and try cast to ListPopupWindow
+            ListPopupWindow popupWindow = (ListPopupWindow) popup.get(voiceSpinner);
+            ListPopupWindow popupWindow2 = (ListPopupWindow) popup.get(proSpinner);
 
- */
+            // Set popupWindow height to 500px
+            popupWindow.setHeight(600);
+            popupWindow2.setHeight(600);
+        }
+        catch (NoClassDefFoundError | ClassCastException | NoSuchFieldException | IllegalAccessException e) {
+            // silently fail...
+        }
+
 
         String url = "https://www.theguardian.com/international";
         Document doc = null;
@@ -114,8 +147,118 @@ public class News1Activity extends Fragment {
             e.printStackTrace();
         }
 
-        Elements element2 = doc2.select("div.css-8bpe6e");
+        Elements element2 = doc2.select("div.dcr-zs6acm");
         newscontent.setText(element2.text());
+
+        element3 = element2.select("p.dcr-s23rjr");
+
+
+
+        params.putString(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, null);
+
+
+        tts = new TextToSpeech(this.getActivity(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+
+                if (status == TextToSpeech.SUCCESS) {
+                    //사용할 언어를 설정
+                    int result = tts.setLanguage(Locale.ENGLISH);
+                    //언어 데이터가 없거나 혹은 언어가 지원하지 않으면...
+                    if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                        Toast.makeText(getActivity(), "이 언어는 지원하지 않습니다.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        imgbPlay.setEnabled(true);
+                        //음성 톤
+                        tts.setPitch(0.7f);
+                        //읽는 속도
+                        tts.setSpeechRate(1.0f);
+
+                    }
+                } else {
+
+                }
+            }
+        });
+
+        tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+            @Override
+            public void onStart(String s) {
+
+            }
+
+            @Override
+            public void onDone(String s) {
+                clearAll();
+            }
+
+            @Override
+            public void onError(String s) {
+                showState("재생 중 에러가 발생했습니다.");
+            }
+
+            @Override
+            public void onRangeStart(String utteranceId, int start, int end, int frame) {
+                lastPlayIndex = start;
+            }
+        });
+
+
+
+        imgbPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String newscontent2 = element3.get(0).text() + element3.get(1).text() + element3.get(2).text(); // 전체 기사는 너무 길어서 tts 안되어서 일부만 일단 나오도록 함
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (playState.isStopping() && !tts.isSpeaking()) {
+                        tts.speak(newscontent2, TextToSpeech.QUEUE_FLUSH, params, newscontent2);
+                    } else if (playState.isWaiting()) {
+                        standbyIndex += lastPlayIndex;
+                        tts.speak(newscontent2.substring(standbyIndex), TextToSpeech.QUEUE_FLUSH, params, newscontent2.substring(standbyIndex));
+                    }
+                    playState = PlayState.PLAY;
+
+
+                } else {
+
+                    tts.speak(newscontent2, TextToSpeech.QUEUE_FLUSH, null);
+                }
+
+            }
+
+        });
+
+
+        imgbPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (playState.isPlaying()) {
+                    playState = PlayState.WAIT;
+                    tts.stop();
+                }
+
+            }
+
+        });
+
+        imgbStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                tts.stop();
+                clearAll();
+            }
+
+        });
+
+
+
+
+
+
 
 
         newscontent.setOnLongClickListener(new View.OnLongClickListener() {
@@ -167,7 +310,7 @@ public class News1Activity extends Fragment {
         voiceRecord = (ImageButton)view.findViewById(R.id.voiceRecord);
         intent=new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,getActivity().getPackageName());
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,"ko-KR");
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,"en-US");
         voiceRecord.setOnClickListener(v -> {
             mRecognizer=SpeechRecognizer.createSpeechRecognizer(this.getActivity());
             mRecognizer.setRecognitionListener(listener);
@@ -179,6 +322,67 @@ public class News1Activity extends Fragment {
 
         return view;
     }
+
+
+
+    private void clearAll() {
+        playState = PlayState.STOP;
+        standbyIndex = 0;
+        lastPlayIndex = 0;
+
+    }
+
+    private void showState(final String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+
+
+    @Override
+    public void onPause() {
+        if (playState.isPlaying()) {
+            playState = PlayState.WAIT;
+            tts.stop();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        if (playState.isWaiting()) {
+            String newscontent2 = element3.get(0).text() + element3.get(1).text() + element3.get(2).text(); // 전체 기사는 너무 길어서 tts 안되어서 일부만 일단 나오도록 함
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                if (playState.isStopping() && !tts.isSpeaking()) {
+                    tts.speak(newscontent2, TextToSpeech.QUEUE_FLUSH, params, newscontent2);
+                } else if (playState.isWaiting()) {
+                    standbyIndex += lastPlayIndex;
+                    tts.speak(newscontent2.substring(standbyIndex), TextToSpeech.QUEUE_FLUSH, params, newscontent2.substring(standbyIndex));
+                }
+                playState = PlayState.PLAY;
+
+            } else {
+
+                tts.speak(newscontent2, TextToSpeech.QUEUE_FLUSH, null);
+            }
+
+        }
+        super.onResume();
+    }
+
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // TTS 객체가 남아있다면 실행을 중지하고 메모리에서 제거한다.
+        if (tts != null) {
+            tts.stop();
+            tts.shutdown();
+            //tts = null;
+        }
+    }
+
 
     private RecognitionListener listener = new RecognitionListener() {
         @Override public void onReadyForSpeech(Bundle params) {
@@ -258,13 +462,18 @@ public class News1Activity extends Fragment {
         return offset;
     }
 
-    public String chooseWord(int offset){
+    public String chooseWord(int offset) {
+
+        Spannable span = (Spannable) newscontent.getText();
 
         String strWord="";
+
 
         for(int i=offset-1;;i--){     //선택한 글자(알파벳하나)가 포함된 단어의 앞부분 받아오기
 
             String a=String.valueOf(newscontent.getText().charAt(i));
+
+            span.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), i, i+1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
             if(!a.equals(" ")&&!a.equals(",") &&!a.equals("]")&&!a.equals(")")&&!a.equals("`")&&!a.equals("?")&&!a.equals(".")&&!a.equals("/")&&!a.equals(";")&&!a.equals(":")){
 
@@ -285,6 +494,8 @@ public class News1Activity extends Fragment {
         for(int i=offset;;i++){   //선택한 글자(알파벳하나)가 포함된 단어의 뒷부분 받아오기
 
             String a=String.valueOf(newscontent.getText().charAt(i));
+
+            span.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), i, i+1, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
             if(!a.equals(" ")&&!a.equals(",") &&!a.equals("]")&&!a.equals(")")&&!a.equals("`")&&!a.equals("?")&&!a.equals(".")&&!a.equals("/")&&!a.equals(";")&&!a.equals(":")){
                 strWord=strWord+a;

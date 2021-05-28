@@ -9,14 +9,7 @@
     </string-array>
 
     <string-array name="voice_choice">
-        <item>유연석</item>
-        <item>공유</item>
-        <item>강동원</item>
-        <item>김선호</item>
-        <item>아이유</item>
-        <item>공명</item>
-        <item>김강민</item>
-        <item>송강</item>
+        <item>기본 목소리</item>
 
     </string-array>
 </resources>
