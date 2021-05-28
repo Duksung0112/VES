@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:id="@+id/artPro"
+            android:id="@+id/spPro"
             android:backgroundTint="#8c8d91"
             android:background="#8c8d91"
             android:layout_margin="3dp"/>
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:id="@+id/artVoice"
+            android:id="@+id/spVoice"
             android:backgroundTint="#8c8d91"
             android:background="#8c8d91"
             android:layout_margin="3dp"
@@ -55,24 +55,27 @@
             android:background="#f7dc4f"
             android:src="@drawable/ic_baseline_play_arrow_24"
             android:layout_margin="10dp"
+            android:id="@+id/imgbPlay"
             />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#f7dc4f"
             android:src="@drawable/ic_baseline_pause_24"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:id="@+id/imgbPause"/>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#f7dc4f"
             android:src="@drawable/ic_baseline_stop_24"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:id="@+id/imgbStop"/>
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
         android:text="기사 들어갈 부분"
         android:textColor="@color/black"
         android:id="@+id/newscontent"
