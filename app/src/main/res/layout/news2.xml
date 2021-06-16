@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:id="@+id/artPro"
+            android:id="@+id/spPro"
             android:backgroundTint="#8c8d91"
             android:background="#8c8d91"
             android:layout_margin="3dp"/>
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_weight="1"
-            android:id="@+id/artVoice"
+            android:id="@+id/spVoice"
             android:backgroundTint="#8c8d91"
             android:background="#8c8d91"
             android:layout_margin="3dp"
@@ -55,34 +55,40 @@
             android:background="#f7dc4f"
             android:src="@drawable/ic_baseline_play_arrow_24"
             android:layout_margin="10dp"
+            android:id="@+id/imgbPlay"
             />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#f7dc4f"
             android:src="@drawable/ic_baseline_pause_24"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:id="@+id/imgbPause"/>
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#f7dc4f"
             android:src="@drawable/ic_baseline_stop_24"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:id="@+id/imgbStop"/>
     </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="200dp"
         android:text="기사 들어갈 부분"
-        android:id="@+id/newscontent"
         android:textColor="@color/black"
+        android:id="@+id/newscontent"
         android:scrollbars="vertical"
-        android:textIsSelectable="true"
-        android:layout_marginBottom="20dp"/>
+        android:textIsSelectable="false"
+        android:layout_marginBottom="20dp"
+        android:focusable="true"/>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
@@ -91,17 +97,25 @@
             android:text="질문 들어갈 부분"
             android:textColor="@color/black"
             android:id="@+id/question"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginRight="15dp"
+            />
 
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_record_voice_over_24"
             android:background="#f7dc4f"
+            android:id="@+id/voiceRecord"
 
             />
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/sttResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="음성인식 결과가 여기에 표시됩니다."
+        android:textColor="@color/black"/>
 
 </LinearLayout>
