@@ -80,6 +80,7 @@ public class News1Activity extends Fragment {
     private final Bundle params = new Bundle();
     private PlayState playState = PlayState.STOP;
     Elements element3;
+    String eng;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -562,7 +563,7 @@ public class News1Activity extends Fragment {
 
 
         menu.clear();
-        menu.add(0, 1, 100, "단어장에 추가");
+        menu.add(0, 1, 100, selectedword + " : 단어장에 추가");
     }
 
     @Override
@@ -608,7 +609,7 @@ public class News1Activity extends Fragment {
                 Elements el = wordelement.select("ul.list_search");
                 Element selectedwordmean = el.get(0);
 
-                String eng = selectedword;
+                eng = selectedword;
                 String kor = selectedwordmean.text();
 
 

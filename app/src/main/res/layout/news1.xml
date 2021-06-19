@@ -75,14 +75,16 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="290dp"
         android:text="기사 들어갈 부분"
         android:textColor="@color/black"
         android:id="@+id/newscontent"
         android:scrollbars="vertical"
         android:textIsSelectable="false"
         android:layout_marginBottom="20dp"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:textSize="15dp"/>
+
 
 
 
@@ -98,6 +100,7 @@
             android:textColor="@color/black"
             android:id="@+id/question"
             android:layout_marginRight="15dp"
+            android:textSize="15dp"
             />
 
         <ImageButton
@@ -116,6 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="음성인식 결과가 여기에 표시됩니다."
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:textSize="15dp"/>
 
 </LinearLayout>

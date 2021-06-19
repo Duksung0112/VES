@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tabHome"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="560dp"
     android:background="#fffcf3"
     android:orientation="vertical"
     tools:context=".HomeActivity">
@@ -41,6 +41,8 @@
                         android:textColor="@color/black"
                         android:id="@+id/tvlv1"
                         android:gravity="center_vertical"
+                        android:text="기사 제목"
+                        android:textSize="20dp"
                        >
 
                     </TextView>
@@ -75,7 +77,8 @@
                         android:layout_weight="4"
                         android:textColor="@color/black"
                         android:id="@+id/tvlv2"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:textSize="20dp">
 
                     </TextView>
 
@@ -105,7 +108,8 @@
                         android:layout_weight="4"
                         android:textColor="@color/black"
                         android:id="@+id/tvlv3"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:textSize="20dp">
 
                     </TextView>
 
