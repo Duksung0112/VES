@@ -75,7 +75,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="370dp"
+        android:layout_height="290dp"
         android:text="기사 들어갈 부분"
         android:textColor="@color/black"
         android:id="@+id/newscontent"
