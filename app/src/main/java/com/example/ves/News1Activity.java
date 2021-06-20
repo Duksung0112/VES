@@ -291,7 +291,7 @@ public class News1Activity extends Fragment {
         List<String> qValues = new ArrayList<>();
 
         qValues.add("Q : How was the article?");
-        qValues.add("Q : What is the most important point in this article?");
+        //qValues.add("Q : What is the most important point in this article?");
         qValues.add("Q : What did you get from this article?");
         qValues.add("Q : What do you think about this topic?");
         qValues.add("Q : What did you feel in this article?");
@@ -562,7 +562,7 @@ public class News1Activity extends Fragment {
 
 
         menu.clear();
-        menu.add(0, 1, 100, "단어장에 추가");
+        menu.add(0, 1, 100, selectedword +  " : 단어장에 추가");
     }
 
     @Override
