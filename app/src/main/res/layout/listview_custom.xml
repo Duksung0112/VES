@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginTop="24dp"
+
         >
 
             <TextView
@@ -27,7 +28,8 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="7dp"
                 android:layout_marginRight="7dp"
-                android:layout_marginBottom="3dp"/>
+                android:layout_marginBottom="3dp"
+                android:textSize="15dp"/>
 
             <TextView
                 android:layout_weight="1"
@@ -37,7 +39,8 @@
                 android:text="contents.."
                 android:textColor="@color/black"
                 android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"/>
+                android:layout_marginRight="7dp"
+                android:textSize="15dp"/>
 
             <View
                 android:layout_width="match_parent"
